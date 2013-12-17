@@ -11,3 +11,47 @@
 <% else %>
   <h1>Wellcome to chatwork</h1>
 <% end %>
+<%= link_to "Test", "#", class: "btn" %>
+
+<script>
+$(function() {
+  $(".btn").click(function (){
+    $( ".dialog" ).dialog( {
+            show : "slide",
+            hide : "toggle",
+            width: 800,
+            height: 500,
+            modal: true,
+            title: "Edit profile"
+        });
+  });
+});
+</script>
+
+<div class="dialog" style="display: none">
+  <h3>Change Users Profile</h3>
+  <%= form_for current_user do |f| %>
+    <%= f.label :name %>
+    <div class="input_new"><%= f.text_field :name %></div>
+    <%= f.label :birthday %>
+    <div class="date_select">
+      <%= f.date_select :birthday, order: [:day, :month, :year],  start_year: Time.now.year - 100, end_year: Time.now.year %>
+    </div>
+    <%= f.radio_button :gender, "male" %> Male
+    <%= f.radio_button :gender, "female" %> Female<br>
+
+    <%= f.label :company %>
+    <%= f.text_field :company %>
+    <%= f.label :address %>
+    <%= f.text_area :address %>
+
+    <div><%= f.submit "Update" %></div>
+  <% end %>
+  <%= link_to "Cancel", :back %>
+</div>
+
+<script>
+  $(".edit_user").submit.function(){
+    
+  }
+</script>
