@@ -1,0 +1,22 @@
+<div class="edit_profile">
+  <h3>Change Users Profile</h3>
+  <%= form_for current_user do |f| %>
+    <%= render 'shared/error_messages' %>
+    <%= f.label :name %>
+    <div class="input_new"><%= f.text_field :name %></div>
+    <%= f.label :birthday %>
+    <div class="date_select">
+      <%= f.date_select :birthday, order: [:day, :month, :year] %>
+    </div>
+    <%= f.radio_button :gender, "male" %> Male
+    <%= f.radio_button :gender, "female" %> Female<br>
+
+    <%= f.label :company %>
+    <%= f.text_field :company %>
+    <%= f.label :address %>
+    <%= f.text_area :address %>
+
+    <div><%= f.submit "Update" %></div>
+  <% end %>
+  <%= link_to "Cancel", :back %>
+</div>
