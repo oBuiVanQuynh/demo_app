@@ -1,0 +1,30 @@
+
+.row {
+  margin: 0 !important;
+  padding: 0 40px;
+}
+
+.left-sidebar {
+  width: 23%;
+  float: left;
+  padding-left: 20px;
+  padding-right: -20px;
+}
+
+.right-sidebar {
+  width: 23%;
+  float: right;
+}
+
+.main-content {
+  width: 46%;
+  float: left;
+  padding: 0 2%;
+  border-left: 1px solid #eee;
+}
+
+.micropost-home{
+  width: 450px;
+  float: right;
+
+}
