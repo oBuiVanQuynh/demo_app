@@ -1,0 +1,34 @@
+<div class ="left-sidebar">
+  <ul>
+    <% @users.each do |user| %>
+      <li>
+        <%= link_to user.email, user_path(user) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div class="main-content">
+  <%= form_for [@user, Message.new], method: :post do |message| %>
+    <div class="field">
+      <%= render "shared/error_messages", object: message.object %>
+      <%= message.text_area :content %> 
+      <%= message.submit "Send", class: "btn btn-primary floatright" %>
+    </div>
+  <% end %>
+  Message:
+  <ul>
+    <% @messages.each do |message| %>
+      <% if message.user_id == current_user.id && message.friend_id == @user.id %>
+        <li>
+          <%= message.user.email %>
+          <%= message.content %>
+        </li>
+      <% elsif message.user_id == @user.id && message.friend_id == current_user.id %>
+        <li>
+          <%= message.user.email %>
+          <%= message.content %>
+        </li>
+      <% end %> 
+    <% end %>
+  </ul>
+</div>
