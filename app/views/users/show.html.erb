@@ -13,9 +13,11 @@
     <div class="field">
       <%= render "shared/error_messages", object: message.object %>
       <%= message.text_area :content %> 
-      <%= message.submit "Send", class: "btn btn-primary floatright" %>
+      <%= message.submit "Send", class: "btn btn-primary " %>
     </div>
   <% end %>
+</div>
+<div>
   Message:
   <ul class="posts">
     <% @messages.each do |message| %>
@@ -23,3 +25,19 @@
     <% end %>
   </ul>
 </div>
+<script>
+  $(".message").each(function() {
+    var _message_id = $(this).find('#_message_id').val();
+    var message = $(this).find('#_message_content').html();
+    $(this).mouseover(function(){
+      $(this).find(".quote").show();
+    });
+    $(this).mouseout(function(){
+      $(this).find(".quote").hide();
+    });
+    $(this).find(".quote").click(function(event){
+      event.preventDefault();
+      $('#message_content').val("[id=" + _message_id + "] " + message + "\n");
+    });
+  });
+</script>

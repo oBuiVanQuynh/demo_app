@@ -1,3 +1,10 @@
-<li >
-  <span><%= message.user.email %>:<%= message.content %></span>
-</li >
+<div>
+  <li class="message " id="__message_<%= message.id %>">
+
+    <input type="hidden" id="_message_id" value="<%= message.id %>">
+    <span id="_message_content"><%= message.user.email %> <%= message.content %></span>
+    <span class="show" id="_hidden">
+      <%= link_to "Trich dan", "#" , class: "quote " %>
+    </span>
+  </li>
+</div>
