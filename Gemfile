@@ -8,7 +8,6 @@ gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -28,6 +27,7 @@ gem 'turbolinks'
 gem 'bootstrap-sass', '2.3.2.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+gem 'bootstrap-sass', '~> 2.1.1.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

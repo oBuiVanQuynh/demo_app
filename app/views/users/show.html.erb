@@ -1,34 +1,43 @@
 <div class ="left-sidebar">
-  <ul>
+  <h2><%= current_user.email %></h2>
+  <ol>
     <% @users.each do |user| %>
       <li>
         <%= link_to user.email, user_path(user) %>
       </li>
     <% end %>
-  </ul>
+  </ol>
 </div>
 <div class="main-content">
-  <%= form_for [@user, Message.new], method: :post do |message| %>
+  <%= form_for [@user, Message.new], remote: true do |message| %>
     <div class="field">
       <%= render "shared/error_messages", object: message.object %>
       <%= message.text_area :content %> 
-      <%= message.submit "Send", class: "btn btn-primary floatright" %>
+      <%= message.submit "Send", class: "btn btn-primary " %>
     </div>
   <% end %>
+</div>
+<div>
   Message:
-  <ul>
+  <ul class="posts">
     <% @messages.each do |message| %>
-      <% if message.user_id == current_user.id && message.friend_id == @user.id %>
-        <li>
-          <%= message.user.email %>
-          <%= message.content %>
-        </li>
-      <% elsif message.user_id == @user.id && message.friend_id == current_user.id %>
-        <li>
-          <%= message.user.email %>
-          <%= message.content %>
-        </li>
-      <% end %> 
+    <%= render "shared/message", message: message %>
     <% end %>
   </ul>
 </div>
+<script>
+  $(".message").each(function() {
+    var _message_id = $(this).find('#_message_id').val();
+    var message = $(this).find('#_message_content').html();
+    $(this).mouseover(function(){
+      $(this).find(".quote").show();
+    });
+    $(this).mouseout(function(){
+      $(this).find(".quote").hide();
+    });
+    $(this).find(".quote").click(function(event){
+      event.preventDefault();
+      $('#message_content').val("[id=" + _message_id + "] " + message + "\n");
+    });
+  });
+</script>

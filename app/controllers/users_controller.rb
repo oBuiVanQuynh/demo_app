@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @users = User.all
-    @messages = Message.all
+    @messages = Message.chat_with_friend current_user.id, @user.id
   end
 
 
