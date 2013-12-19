@@ -12,7 +12,6 @@ class MessagesController < ApplicationController
   end
 
   def create
-    binding.pry
     @message = current_user.messages.new(message_params)
     if @message.save
       # respond_to do |format|
