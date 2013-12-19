@@ -12,8 +12,9 @@
   <%= form_for [@user, Message.new], remote: true do |message| %>
     <div class="field">
       <%= render "shared/error_messages", object: message.object %>
-      <%= message.text_area :content %> 
-      <%= message.submit "Send", class: "btn btn-primary " %>
+      <%= message.hidden_field :friend_id, value: @user.id %>
+      <%= message.text_area :content, id: "__content" %> 
+      <%= message.submit "Send", class: "btn btn-primary ", id: "send" %>
     </div>
   <% end %>
 </div>

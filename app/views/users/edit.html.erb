@@ -1,4 +1,4 @@
-<div class="edit_profile">
+<div z="edit_profile">
   <h3>Change Users Profile</h3>
   <%= form_for current_user do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
@@ -6,7 +6,7 @@
     <div class="input_new"><%= f.text_field :name %></div>
     <%= f.label :birthday %>
     <div class="date_select">
-      <%= f.date_select :birthday, order: [:day, :month, :year] %>
+      <%= f.date_select :birthday, order: [:day, :month, :year],  start_year: Time.now.year - 100, end_year: Time.now.year %>
     </div>
     <%= f.radio_button :gender, "male" %> Male
     <%= f.radio_button :gender, "female" %> Female<br>

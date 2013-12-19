@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     if user_params
       current_user.update_attributes user_params
     end
-    redirect_to user_path current_user
+    redirect_to :back
   end
 
   def show
@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     @users = User.all
     @messages = Message.chat_with_friend current_user.id, @user.id
   end
-
 
   private
   def user_params
