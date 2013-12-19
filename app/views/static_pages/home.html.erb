@@ -8,9 +8,6 @@
       <% end %>
     </ul>
   </div>
-<% else %>
-  <h1>Wellcome to chatwork</h1>
-<% end %>
 <%= link_to "Test", "#", class: "btn" %>
 
 <script>
@@ -49,9 +46,6 @@ $(function() {
   <% end %>
   <%= link_to "Cancel", :back %>
 </div>
-
-<script>
-  $(".edit_user").submit.function(){
-    
-  }
-</script>
+<% else %>
+  <h1>Wellcome to chatwork</h1>
+<% end %>
